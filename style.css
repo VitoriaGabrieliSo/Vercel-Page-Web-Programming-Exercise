@@ -258,6 +258,153 @@ body {
   padding-bottom: 10px;
 }
 
+.hero-ai {
+    position: relative;
+    width: 100%;
+    min-height: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    padding-top: 100px; /* Mais espaço para respirar como na Vercel */
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+/* 1. Grade de Fundo sutil */
+.grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 55px 55px; /* Tamanho exato do grid do print */
+    mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+    pointer-events: none;
+    z-index: 5; /* Fica acima do glow para dar o efeito de confinamento */
+}
+
+/* 2. Conteúdo de Texto */
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem; /* Fonte enorme e impactante */
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    margin-bottom: 16px;
+    color: #ffffff;
+}
+
+.hero-content p {
+    color: #a1a1a1;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    max-width: 650px;
+    margin: 0 auto 32px;
+}
+
+/* 3. Botões idênticos ao print */
+.hero-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.btn-white {
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s;
+}
+
+.btn-white .triangle-icon {
+    font-size: 11px;
+}
+
+.btn-dark {
+    background: #0a0a0a;
+    color: #ffffff;
+    border: 1px solid #333333;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-white:hover { background: #e5e5e5; }
+.btn-dark:hover { background: #141414; border-color: #555; }
+
+/* 1. O container pai precisa "cortar" o que vazar para baixo */
+.visual-stage {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 400px;     
+    margin-top: -50px; 
+    z-index: 5;
+    overflow: hidden;   
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; 
+}
+
+/*Triângulo e Círculo de Cores*/
+
+/*Círculo de Cores */
+.rainbow-glow {
+    position: absolute;
+
+    width: 1800px; 
+    height: 700px; 
+
+    bottom: -350px; /*Metade da altura para esconder o fundo */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    border-radius: 50%; 
+    
+    background: conic-gradient(
+        from -120deg at 50% 50%,
+        #007cf0,#007cf0, #00dfd8,#f9cb28,#f54e11, #f10509,#f10509,#f10509, #007cf0
+    );
+    
+    filter: blur(20px); 
+    opacity: 0.7;
+    
+    mask-image: radial-gradient(circle at 50% 85%, transparent 5%, black 50%, transparent 59%);
+}
+
+.triangle-wrapper {
+    position: absolute;
+    bottom: 0; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1000px;
+    z-index: 10;
+}
+
+.stack-svg {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(255,255,255,0.05));
+}
+
 /*Footer*/
 
 .footer {
