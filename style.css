@@ -1,12 +1,13 @@
-/*Reset*/
+/* Reset */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #000;
   color: #fff;
+  overflow-x: hidden; /* FIX: previne scroll lateral global */
 }
 
-/*Header*/
+/* Header */
 .header {
   position: sticky;
   top: 0;
@@ -15,32 +16,24 @@ body {
   border-bottom: 1px solid #222;
 }
 
-/*Container*/
+/* Container (header) */
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 16px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/*Logo*/
-.logo a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-/*Nav Desktop*/
+/* Nav Desktop */
 .nav ul {
   display: flex;
-  gap: 24px;
+  gap: 30px;
   list-style: none;
   margin: 0;
   padding: 0;
+  /* FIX: removida largura fixa de 885px que causava overflow */
 }
 
 .nav ul li {
@@ -58,21 +51,19 @@ body {
   color: #fff;
 }
 
-/*Dropdown*/
+/* Dropdown */
 .dropdown {
   position: absolute;
   top: 100%;
   left: 0;
-
-  width: 750px;
+  /* FIX: substituída largura fixa de 750px por valor relativo com max */
+  width: min(750px, 90vw);
   padding-top: 16px;
-
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
   transition: all 0.2s ease;
-
-  z-index: 2000; /*evita ficar atrás do header */
+  z-index: 2000;
 }
 
 .dropdown-content {
@@ -80,12 +71,10 @@ body {
   border: 1px solid #222;
   border-radius: 12px;
   padding: 24px;
-
   display: flex;
   gap: 40px;
 }
 
-/*Colunas*/
 .column {
   display: flex;
   flex-direction: column;
@@ -93,13 +82,13 @@ body {
 }
 
 .column h4 {
+  font-weight: bold;
   font-size: 12px;
-  color: #777;
+  color: #666;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-/*Item do menu*/
 .item {
   display: flex;
   gap: 12px;
@@ -113,16 +102,12 @@ body {
   background: rgba(255, 255, 255, 0.05);
 }
 
-/*icone menu*/
 .icon {
   width: 36px;
   height: 36px;
-
   border: 1px solid #333;
   border-radius: 8px;
-
   background: rgba(255, 255, 255, 0.02);
-
   flex-shrink: 0;
   transition: all 0.2s ease;
 }
@@ -132,7 +117,6 @@ body {
   background: rgba(255, 255, 255, 0.05);
 }
 
-/*Texto */
 .text {
   display: flex;
   flex-direction: column;
@@ -148,14 +132,13 @@ body {
   font-size: 12px;
 }
 
-/*Mostrar Dropdown */
 .has-dropdown:hover .dropdown {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 
-/*Botoes */
+/* Botões */
 .actions {
   display: flex;
   gap: 12px;
@@ -187,45 +170,35 @@ body {
   background: #ddd;
 }
 
-/*Menu Mobile*/
-
-/* ESCONDE CHECKBOX */
+/* Menu Mobile */
 #menu-toggle {
   display: none;
 }
 
-/* BOTÃO HAMBURGUER */
 .menu-toggle {
   display: none;
   font-size: 24px;
   cursor: pointer;
 }
 
-/* MENU MOBILE */
 .mobile-menu {
   position: fixed;
   top: 0;
   right: 0;
   width: 100%;
   height: 100vh;
-
   background: #000;
-
   transform: translateX(100%);
   transition: transform 0.3s ease;
-
-  z-index: 3000; /*  acima de tudo */
-
+  z-index: 3000;
   display: flex;
   flex-direction: column;
 }
 
-/* ABRE MENU */
 #menu-toggle:checked ~ .mobile-menu {
   transform: translateX(0);
 }
 
-/* BOTÃO FECHAR */
 .close-btn {
   display: block;
   text-align: right;
@@ -234,7 +207,6 @@ body {
   cursor: pointer;
 }
 
-/* CONTEÚDO */
 .mobile-content {
   padding: 20px;
   display: flex;
@@ -242,7 +214,6 @@ body {
   gap: 20px;
 }
 
-/* LINKS MOBILE */
 .mobile-links {
   display: flex;
   flex-direction: column;
@@ -258,34 +229,37 @@ body {
   padding-bottom: 10px;
 }
 
+
+
 .hero-ai {
     position: relative;
-    width: 100%;
-    min-height: 800px;
+    max-width: 1200px;
+    margin: 40px auto;
+    height: 85vh;
+    background-color: #000;
+    border: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     overflow: hidden;
-    padding-top: 100px; /* Mais espaço para respirar como na Vercel */
-    font-family: 'Inter', -apple-system, sans-serif;
+    padding-top: 80px; 
 }
 
-/* 1. Grade de Fundo sutil */
+
 .grid-overlay {
     position: absolute;
     inset: 0;
     background-image: 
         linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-    background-size: 55px 55px; /* Tamanho exato do grid do print */
-    mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+    background-size: 100px 100px; 
     pointer-events: none;
-    z-index: 5; /* Fica acima do glow para dar o efeito de confinamento */
-}
+    z-index: 5; 
+  }
 
-/* 2. Conteúdo de Texto */
-.hero-content {
+
+.hero-content1 {
     position: relative;
     z-index: 10;
     text-align: center;
@@ -293,9 +267,18 @@ body {
     padding: 0 20px;
 }
 
+.hero-content2 {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 20px;
+    height: 100px;
+}
+
 .hero-content h1 {
-    font-size: 3.5rem; /* Fonte enorme e impactante */
-    font-weight: 700;
+    font-size: 48px; 
+    font-weight: 600;
     letter-spacing: -0.04em;
     margin-bottom: 16px;
     color: #ffffff;
@@ -309,7 +292,6 @@ body {
     margin: 0 auto 32px;
 }
 
-/* 3. Botões idênticos ao print */
 .hero-actions {
     display: flex;
     gap: 12px;
@@ -350,30 +332,26 @@ body {
 .btn-white:hover { background: #e5e5e5; }
 .btn-dark:hover { background: #141414; border-color: #555; }
 
-/* 1. O container pai precisa "cortar" o que vazar para baixo */
 .visual-stage {
     position: relative;
     width: 100%;
-    max-width: 1000px;
-    height: 400px;     
+    height: 700px;     
     margin-top: -50px; 
-    z-index: 5;
     overflow: hidden;   
     display: flex;
     justify-content: center;
     align-items: flex-end; 
 }
 
-/*Triângulo e Círculo de Cores*/
-
 /*Círculo de Cores */
 .rainbow-glow {
     position: absolute;
 
-    width: 1800px; 
+    width: 120vw; 
+    max-width: 1200px;
     height: 700px; 
 
-    bottom: -350px; /*Metade da altura para esconder o fundo */
+    bottom: -350px;
     left: 50%;
     transform: translateX(-50%);
     
@@ -384,19 +362,19 @@ body {
         #007cf0,#007cf0, #00dfd8,#f9cb28,#f54e11, #f10509,#f10509,#f10509, #007cf0
     );
     
-    filter: blur(20px); 
-    opacity: 0.7;
-    
-    mask-image: radial-gradient(circle at 50% 85%, transparent 5%, black 50%, transparent 59%);
+    filter: blur(40px); 
+    opacity: 0.4;   
+
 }
 
 .triangle-wrapper {
     position: absolute;
-    bottom: 0; 
+    bottom: 58px;
     left: 50%;
     transform: translateX(-50%);
-    width: 1000px;
-    z-index: 10;
+    width: 100%;
+    max-width: 1000px;
+
 }
 
 .stack-svg {
@@ -405,40 +383,40 @@ body {
     filter: drop-shadow(0 0 20px rgba(255,255,255,0.05));
 }
 
-/*Footer*/
 
+/* Footer */
 .footer {
   margin-top: 100px;
   border-top: 1px solid #111;
-  padding: 60px 20px;
+  padding: 20px;
 }
 
 .footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-
+  max-width: 1500px;
+  margin: 30px auto;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 40px;
+  gap: 60px;
+  padding: 0 16px;
 }
 
 .footer-column {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 
 .footer-column h4 {
   font-size: 12px;
   text-transform: uppercase;
-  color: #777;
+  color: white;
   margin-bottom: 10px;
 }
 
 .footer-column a {
   color: #aaa;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13px;
   transition: color 0.2s;
 }
 
@@ -446,15 +424,11 @@ body {
   color: #fff;
 }
 
-/* FOOTER BOTTOM */
 .footer-bottom {
   grid-column: span 6;
-
   margin-top: 40px;
   padding-top: 20px;
-
   border-top: 1px solid #111;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -473,26 +447,101 @@ body {
   border-radius: 20px;
 }
 
-/*Responsividade*/
+
 @media (max-width: 768px) {
 
+  /* Oculta nav desktop e botões de ação */
   .nav,
   .actions {
     display: none;
   }
 
+  /* Mostra botão hambúrguer */
   .menu-toggle {
     display: block;
   }
 
-  .footer-container {
-    grid-template-columns: repeat(2, 1fr);
+  /* Hero */
+  .hero-ai {
+    height: auto;
+    min-height: 100vh;
+    padding: 100px 16px 0;
+    margin: 0;
+    border-left: none;
+    border-right: none;
+    /* FIX: garante que o hero não vaze */
+    width: 100%;
+    box-sizing: border-box;
   }
 
-  .footer-bottom {
+  .hero-content {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hero-content h1 {
+    font-size: 1.9rem;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+  }
+
+  .hero-actions {
     flex-direction: column;
-    gap: 20px;
-    align-items: flex-start;
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  .btn-white,
+  .btn-dark {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .visual-stage {
+    height: 260px;
+  }
+
+  .triangle-wrapper {
+    width: 220vw;
+    max-width: 680px;
+    max-height: 350px;
+  }
+
+  .rainbow-glow {
+    width: 150vw;
+    height: 300px;
+    bottom: -150px;
+    filter: blur(30px);
+  }
+
+  .grid-overlay {
+    background-size: 40px 40px;
+  }
+
+  /* Footer — FIX principal: grid de 2 colunas com gap menor */
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px; /* FIX: gap reduzido para evitar overflow em telas pequenas */
+    padding: 0 16px;
+  }
+
+  /* FIX crítico: span 6 em grid de 2 colunas criava colunas implícitas e overflow */
+  .footer-bottom {
+    grid-column: 1 / -1; /* FIX: ocupa todas as colunas disponíveis, seja 2 ou 6 */
   }
 }
 
+/* Telas muito pequenas (< 360px) */
+@media (max-width: 360px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.6rem;
+  }
+}
