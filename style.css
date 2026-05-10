@@ -23,7 +23,8 @@ body {
   padding: 16px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start
+  gap: 40px;
 }
 
 /* Nav Desktop */
