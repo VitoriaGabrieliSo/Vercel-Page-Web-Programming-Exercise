@@ -34,8 +34,6 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-right: auto;
-  /* width: 850px; */
 }
 
 .nav ul li {
@@ -149,6 +147,7 @@ body {
 .actions {
   display: flex;
   gap: 12px;
+  margin-left: auto;
 }
 
 .btn {
