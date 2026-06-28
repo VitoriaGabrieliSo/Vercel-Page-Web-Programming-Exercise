@@ -122,18 +122,33 @@
       </ul>
     </nav>
 
+    <!-- ========================================================
+         ÁREA DE AÇÕES DO HEADER
+         Substituímos os 3 botões originais por 1 botão que
+         abre/fecha o painel de busca de repositórios
+    ========================================================= -->
     <div class="actions">
-      <button class="btn btn-outline" id="botao-abrir-painel">🔍 Buscar Repos</button>
+      <button class="btn btn-outline" id="botao-abrir-painel">Buscar Repositório</button>
     </div>
 
+    <!-- ========================================================
+         PAINEL SPA (Single Page Application)
+         Este painel fica escondido por padrão (display:none)
+         e aparece quando o usuário clica no botão acima.
+         Contém as 3 funcionalidades do projeto:
+           1. Campo de busca (envia termo para a API do GitHub)
+           2. Lista de resultados (repos encontrados)
+           3. Lista de favoritos (repos salvos no localStorage)
+    ========================================================= -->
     <div id="painel-busca" class="painel-busca" style="display: none;">
       <div class="painel-conteudo">
 
+        <!-- CRITÉRIO 4 e 5: Mensagem de erro de validação -->
         <!-- Fica vazia até o usuário tentar buscar algo inválido -->
         <span id="texto-erro-validacao" class="texto-erro-validacao"></span>
 
         <!-- FUNCIONALIDADE 1: Campo de busca + botão -->
-      <div class="area-busca">
+        <div class="area-busca">
           <input
             type="text"
             id="campo-termo-busca"
