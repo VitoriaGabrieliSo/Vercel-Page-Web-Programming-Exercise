@@ -142,7 +142,7 @@ function exibirCardsDeResultado(listaDeRepos) {
           </a>
           <p class="card-descricao">${repo.description || 'Sem descrição'}</p>
           <div class="card-detalhes">
-            <span>⭐ ${repo.stargazers_count.toLocaleString()}</span>
+            <span>☆ ${repo.stargazers_count.toLocaleString()}</span>
             <span>${repo.language || '—'}</span>
           </div>
         </div>
@@ -152,7 +152,7 @@ function exibirCardsDeResultado(listaDeRepos) {
             class="botao-favoritar"
             onclick="salvarNosRavoritos(${repo.id}, '${nomeSeguro}', '${descricaoSegura}', '${repo.html_url}', ${repo.stargazers_count})"
           >
-            ⭐ Favoritar
+            ☆ Favoritar
           </button>
         </div>
 
@@ -261,7 +261,7 @@ function exibirListaDeFavoritos() {
           </a>
           <p class="card-descricao">${repo.descricao || 'Sem descrição'}</p>
           <div class="card-detalhes">
-            <span>⭐ ${repo.estrelas.toLocaleString()}</span>
+            <span>☆ ${repo.estrelas.toLocaleString()}</span>
           </div>
         </div>
 
