@@ -520,17 +520,23 @@ body {
   }
 }
 
+
+/* =============================================================
+   ESTILOS DO PAINEL SPA — adicionados no Projeto 2
+   Tudo abaixo é novo. O restante acima não foi tocado.
+============================================================= */
+
 /* Painel principal que abre/fecha ao clicar em "Buscar Repos" */
-EU .painel-busca {
-  position: absolute;   
-  top: 60px;            
-  right: 16px;          
-  width: min(560px, 96vw); 
+.painel-busca {
+  position: absolute;   /* flutua sobre a página, não empurra o layout */
+  top: 60px;            /* logo abaixo do header */
+  right: 16px;          /* alinhado à direita */
+  width: min(560px, 96vw); /* máximo 560px, mas cabe em tela pequena */
   background: #111;
   border: 1px solid #222;
   border-radius: 12px;
   padding: 20px;
-  z-index: 2000;        
+  z-index: 2000;        /* fica na frente de tudo */
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
 }
 
@@ -541,6 +547,7 @@ EU .painel-busca {
   gap: 14px;
 }
 
+/* Linha com o campo de texto + botão Buscar lado a lado */
 .area-busca {
   display: flex;
   gap: 10px;
@@ -548,7 +555,7 @@ EU .painel-busca {
 
 /* Campo de texto onde o usuário digita o termo */
 .area-busca input {
-  flex: 1;              
+  flex: 1;              /* ocupa todo espaço disponível ao lado do botão */
   padding: 8px 12px;
   border-radius: 8px;
   border: 1px solid #333;
@@ -587,24 +594,25 @@ EU .painel-busca {
   color: #fff;
 }
 
-/* Aba selecionada fica com borda e texto brancos */
+/* Aba atualmente selecionada fica com borda e texto brancos */
 .aba-ativa {
   border-color: #fff;
   color: #fff;
 }
 
-/* Texto de erro de validação */
+/* Texto de erro de validação (aparece em vermelho quando há erro) */
 .texto-erro-validacao {
   font-size: 13px;
-  color: #f87171;       
-  min-height: 16px;     
+  color: #f87171;       /* vermelho claro */
+  min-height: 16px;     /* reserva espaço para não pular o layout */
 }
 
+/* Container scrollável que agrupa os cards */
 .lista-de-cards {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-height: 340px;    
+  max-height: 340px;    /* altura máxima: depois disso aparece scroll */
   overflow-y: auto;
 }
 
