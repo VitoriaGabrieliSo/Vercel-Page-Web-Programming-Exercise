@@ -483,3 +483,142 @@ button {
     align-items: flex-start;
   }
 }
+.areas-abas {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid #222;
+  padding-bottom: 10px;
+}
+
+.aba {
+  background-color: transparent;
+  border: 1px solid #333;
+  color: #aaa;
+  padding: 6px 14 px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+}
+
+.aba:hover {
+  border-color: #555;
+  color: #fff;
+}
+
+/* Aba atualmente selecionada fica com borda e texto brancos */
+.aba-ativa {
+  border-color: #fff;
+  color: #fff;
+}
+
+/* Texto de erro de validação (aparece em vermelho quando há erro) */
+.texto-erro-validacao {
+  font-size: 13px;
+  color: #f87171;      
+  min-height: 16px;     
+}
+
+/* Container scrollável que agrupa os cards */
+.lista-de-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 340px;    /* altura máxima: depois disso aparece scroll */
+  overflow-y: auto;
+}
+
+.card-repositorio {
+  background: #0a0a0a;
+  border: 1px solid #222;
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  transition: border-color 0.2s;
+}
+
+.card-repositorio:hover {
+  border-color: #444;
+}
+
+.card-info {
+  flex: 1;
+}
+
+.card-nome-repo {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+}
+
+.card-nome-repo:hover {
+  text-decoration: underline;
+}
+
+/* Descrição curta do repositório */
+.card-descricao {
+  font-size: 12px;
+  color: #888;
+  margin: 4px 0 8px;
+  line-height: 1.4;
+}
+
+.card-detalhes {
+  font-size: 12px;
+  color: #666;
+  display: flex;
+  gap: 12px;
+}
+
+/* Coluna da direita: botões de ação (Favoritar / Remover) */
+.card-acoes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.botao-favoritar {
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  border: 1px solid #333;
+  background: transparent;
+  color: #aaa;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.botao-favoritar:hover {
+  border-color: #f59e0b;
+  color: #f59e0b;
+}
+
+.botao-remover {
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  border: 1px solid #333;
+  background: transparent;
+  color: #aaa;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.botao-remover:hover {
+  border-color: #f87171;
+  color: #f87171;
+}
+
+.texto-lista-vazia {
+  text-align: center;
+  color: #555;
+  font-size: 13px;
+  padding: 24px 0;
+}
