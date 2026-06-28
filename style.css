@@ -258,6 +258,141 @@ body {
   padding-bottom: 10px;
 }
 
+.vercel-container {
+  position: absolute;
+  right: 9;
+  width: 100%;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
+  z-index: 0;
+  background-image:
+  linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+
+  background-size: 80px 80px;
+}
+
+.central {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+  max-width: 900px;
+  margin: 0 auto;
+  padding 0 20 px;
+  text-align: center;
+  color: white;
+}
+
+.central::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, 
+  rgba(0,0,0,0.95) 20%,
+  rgba(0,0,0,0.8) 40%,
+  rgba(0,0,0,0.3) 65%
+  transparent 80%);
+  z-index: -1;
+}
+
+button {
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: none;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.primary {
+  background: white;
+  color: black;
+}
+
+.secondary {
+  background: #111;
+  color: white;
+  border: 1px solid #333;
+}
+
+.vercel-container {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 1000px;
+  height: 800px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.luzes-coloridas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilização do Triângulo */
+.triangle-svg {
+  width: 400px;
+  z-index: 2;
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.8);
+  stroke-width: 0.5;
+  /* Efeito de linhas internas (estilo Vercel) */
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+}
+
+
+.luzes {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  filter: blur(80px); /* O segredo do aspecto "nuvem" */
+  border-radius: 50%;
+  opacity: 0.6;
+  z-index: 1;
+}
+
+.azuis {
+  background: radial-gradient(circle, #0066db, transparent);
+  bottom: -30px;
+  left: 10%;
+}
+
+.vermelhas {
+  background: radial-gradient(circle, #ff0000, transparent);
+  bottom: -20px;
+  right: 10%;
+}
+
+.verdes {
+  background: radial-gradient(circle, #00ff80, transparent);
+  top: 15%;
+  left: 45%;
+  width: 250px;
+  opacity: 0.4;
+}
+
+.amarelas{
+  background: radial-gradient(circle, #fffc31, transparent);
+  top: 15%;
+  left: 28%;
+  width: 250px;
+  opacity: 0.4;
+}
+
 /*Footer*/
 
 .footer {
@@ -348,4 +483,3 @@ body {
     align-items: flex-start;
   }
 }
-
