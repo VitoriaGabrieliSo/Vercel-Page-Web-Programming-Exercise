@@ -1,26 +1,19 @@
-// Botão no header que abre/fecha o painel
 const botaoAbrirPainel = document.getElementById('botao-abrir-painel');
 
-// O painel inteiro (div que aparece/desaparece)
+// div que aparece e desaparece ao clicar 
 const painelDeBusca = document.getElementById('painel-busca');
 
-// O campo de texto onde o usuário digita
 const campoBusca = document.getElementById('campo-termo-busca');
 
-// O botão "Buscar" dentro do painel
 const botaoExecutarBusca = document.getElementById('botao-executar-busca');
 
-// Onde aparecem as mensagens de erro de validação
 const textoErroValidacao = document.getElementById('texto-erro-validacao');
 
-// DIV ONDE VÃO FICAR OS RESULTADOS DA BUSCA
+// DIV COM RESULTADOS DA BUSCA
 const listaDosResultados = document.getElementById('lista-de-resultados');
 
-// DIV ONDE VÃO FICAR OS FAVORITOS
+// DIV COM FAVORITOS
 const listaDeFavoritos = document.getElementById('lista-de-favoritos');
-
-
-// 2. ABRIR E FECHAR O PAINEL
 
 botaoAbrirPainel.addEventListener('click', function () {
 
@@ -35,7 +28,7 @@ botaoAbrirPainel.addEventListener('click', function () {
   }
 });
 
-// Fecha o painel se o usuário clicar em qualquer lugar fora dele
+// se clicar em qualquer lugar fora dele Fecha
 document.addEventListener('click', function (evento) {
   const clicouForaDoPatinel  = !painelDeBusca.contains(evento.target);
   const clicouForaDoBotao    = evento.target !== botaoAbrirPainel;
@@ -44,10 +37,6 @@ document.addEventListener('click', function (evento) {
     painelDeBusca.style.display = 'none';
   }
 });
-
-// 3. TROCAR ENTRE AS ABAS
-// Mostra a seção de Resultados ou de Favoritos, e destaca
-// visualmente a aba que está ativa.
 
 function trocarAba(nomeAba) {
 
@@ -73,20 +62,16 @@ function trocarAba(nomeAba) {
   }
 }
 
-// 4. VALIDAÇÃO DO CAMPO DE BUSCA
-// Critério 4: não permite campo vazio ou menos de 3 caracteres.
-// Critério 5: exibe mensagem de erro na própria página (não alert).
-// Retorna true se tudo ok, false se há erro.
-
+// VALIDAÇÃO DO CAMPO DE BUSCA
 function validarCampoDeBusca(termoBuscado) {
 
-  // Caso 1: campo vazio
+  // campo vazio
   if (!termoBuscado) {
     textoErroValidacao.textContent = 'Por favor, digite um termo para buscar.';
     return false;
   }
 
-  // Caso 2: menos de 3 caracteres
+  // menos de 3 caracteres
   if (termoBuscado.length < 3) {
     textoErroValidacao.textContent = 'O termo deve ter pelo menos 3 caracteres.';
     return false;
@@ -95,28 +80,22 @@ function validarCampoDeBusca(termoBuscado) {
   return true;
 }
 
-// COMUNICAÇÃO COM A API DO GITHUB (AJAX + JSON)
-
+//AJAX + JSON
 async function buscarReposNoGithub(termoBuscado) {
 
   const urlDaApi = `https://api.github.com/search/repositories?q=${encodeURIComponent(termoBuscado)}&per_page=10&sort=stars`;
 
-  // fetch() faz a requisição HTTP para a API
-  // await pausa a função até a resposta chegar
+  // fetch() faz a requisição HTTP para a API, await pausa a função até a resposta chegar
   const resposta = await fetch(urlDaApi, {
     headers: { 'Accept': 'application/vnd.github.v3+json' }
   });
 
-  // Converte o corpo da resposta de texto JSON para objeto JavaScript
+  // Converte JSON para objeto JavaScript
   const dadosJson = await resposta.json();
   return dadosJson.items;
 }
 
-
-// EXIBE OS CARDS DE RESULTADO NA TELA
 // Recebe o array de repositórios e gera o HTML de cada card,
-// injetando tudo de uma vez dentro da div de resultados.
-
 function exibirCardsDeResultado(listaDeRepos) {
 
   // Nenhum resultado encontrado
@@ -127,7 +106,7 @@ function exibirCardsDeResultado(listaDeRepos) {
 
   // Para cada repositório, monta uma string HTML com as infos
   // .map() percorre o array e retorna um novo array de strings HTML
-  // .join('') junta todas as strings em uma só (sem separador)
+  // .join('') junta todas as strings em uma só
   listaDosResultados.innerHTML = listaDeRepos.map(function (repo) {
 
     const nomeSeguro = repo.full_name.replace(/'/g, "\\'");
@@ -161,9 +140,6 @@ function exibirCardsDeResultado(listaDeRepos) {
   }).join('');
 }
 
-// EVENTO: Executar a busca ao clicar no botão "Buscar"
-// Lê o campo, valida, chama a API e exibe os resultados.
-
 botaoExecutarBusca.addEventListener('click', async function () {
 
   const termoBuscado = campoBusca.value.trim();
@@ -183,7 +159,7 @@ botaoExecutarBusca.addEventListener('click', async function () {
   }
 });
 
-//pressionar Enter no campo também dispara a busca
+//pressionar Enter
 campoBusca.addEventListener('keydown', function (evento) {
   if (evento.key === 'Enter') {
     botaoExecutarBusca.click();
@@ -191,10 +167,6 @@ campoBusca.addEventListener('keydown', function (evento) {
 });
 
 // SALVA UM FAVORITO NO localStorage
-// Critério da proposta: favoritos devem ser salvos no Front-End
-// usando uma API localStorage.
-// localStorage.getItem / setItem são os métodos da API.
-
 function salvarNosRavoritos(idDoRepo, nomeDoRepo, descricaoDoRepo, urlDoRepo, quantidadeEstrelas) {
 
   const favoritosExistentes = JSON.parse(localStorage.getItem('favoritos') || '[]');
@@ -220,9 +192,6 @@ function salvarNosRavoritos(idDoRepo, nomeDoRepo, descricaoDoRepo, urlDoRepo, qu
 }
 
 // REMOVE UM FAVORITO DO localStorage
-// Filtra o array removendo o item com o id informado,
-// depois salva o array novo de volta.
-
 function removerDosFavoritos(idDoRepo) {
 
   const favoritosExistentes = JSON.parse(localStorage.getItem('favoritos') || '[]');
@@ -236,21 +205,19 @@ function removerDosFavoritos(idDoRepo) {
   exibirListaDeFavoritos();
 }
 
-// EXIBE A LISTA DE FAVORITOS NA TELA
 // Lê os favoritos do localStorage e gera os cards.
-
 function exibirListaDeFavoritos() {
 
-  // Lê o array de favoritos do localStorage
+  // Lê o array de favoritos
   const listaSalva = JSON.parse(localStorage.getItem('favoritos') || '[]');
 
-  // Se não tiver nenhum favorito salvo
+  // sem favoritos salvos
   if (listaSalva.length === 0) {
     listaDeFavoritos.innerHTML = '<p class="texto-lista-vazia">Nenhum favorito salvo ainda.</p>';
     return;
   }
 
-  // Gera os cards dos favoritos
+  // cards dos favoritos
   listaDeFavoritos.innerHTML = listaSalva.map(function (repo) {
     return `
       <div class="card-repositorio">
