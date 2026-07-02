@@ -178,10 +178,10 @@ function salvarNosRavoritos(idDoRepo, nomeDoRepo, descricaoDoRepo, urlDoRepo, qu
   if (jaExisteNosFavoritos) return;
 
   const novoFavorito = {
-    id:       idDoRepo,
-    nome:     nomeDoRepo,
+    id: idDoRepo,
+    nome: nomeDoRepo,
     descricao: descricaoDoRepo,
-    url:      urlDoRepo,
+    url: urlDoRepo,
     estrelas: quantidadeEstrelas
   };
 
